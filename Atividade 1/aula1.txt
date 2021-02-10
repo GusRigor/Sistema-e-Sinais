@@ -1,0 +1,132 @@
+########################## Bibliotecas ################################
+
+import matplotlib.pyplot as plt 
+from math import cos, e, pi
+
+########################## Vars importantes ############################
+
+GtR = pi/180 #Grau para Radianos
+tempo = []
+for t in range(0, 21):
+    tempo.append(t/10)
+
+####################### Função para as senoides ########################
+
+def monta_func (A, alpha, omega, teta):
+    """
+    Função para calcular uma função senoidal com relação a var Tempo : List
+    A é amplitude em Metros
+    alpha é o fator de decaimento no tempo
+    omega é a frequência em rad/s
+    fi é a fase em graus
+
+    Retornando um dicionário
+    """
+    x_t = []; e_t = []; osc_t =[]
+    for tmp in tempo:
+        x_t.append(A*(e**(-tmp*alpha))*cos(omega*tmp + teta*GtR))
+        e_t.append(e**(-tmp*alpha))
+        osc_t.append(A*cos(omega*tmp))
+    return {'x_t' : x_t, 'e_t' : e_t, 'osc_t' : osc_t}
+
+######################## Exercício A ########################
+
+plt.title('Exercício a) - Gustavo R.')
+funcao = monta_func(3, 1, 9, -30)
+
+plt.plot(tempo,funcao['x_t'],label='x(t)')
+plt.plot(tempo,funcao['e_t'],label='e(t)')
+plt.plot(tempo,funcao['osc_t'],label='A cos(w0t)')
+plt.xlabel('tempo t')
+
+plt.legend()
+plt.show()
+
+print("""a) A = 3 é causadora da amplitude apresentada no eixo Y, o maior valor de Y sendo A;
+alpha = 1 é o fator que faz as linhas laranja e azul diminuir;
+omega = 9 é a frequência com qual as linhas verde e azul oscilar no tempo;
+teta = -30ºC é a fase com qual a oscilação inicia em t = 0.  
+ """)
+
+######################## Exercício B ########################
+
+ plt.title('Exercício b) - Gustavo R.')
+funcao = monta_func(3, 1, 9, 30)
+
+plt.plot(tempo,funcao['x_t'],label='x(t)')
+plt.plot(tempo,funcao['e_t'],label='e(t)')
+plt.plot(tempo,funcao['osc_t'],label='A cos(w0t)')
+plt.xlabel('tempo t')
+
+plt.legend()
+plt.show()
+
+print("""a) A = 3 é causadora da amplitude apresentada no eixo Y, o maior valor de Y sendo A;
+alpha = 1 é o fator que faz as linhas laranja e azul diminuir;
+omega = 9 é a frequência com qual as linhas verde e azul oscilar no tempo;
+teta = 30ºC é a fase com qual a oscilação inicia em t = 0;
+tendo como diferença o ângulo de fase que por ser um número positivo está atrassado por ser uma função cos. 
+ """)
+
+######################### Exercício C ########################
+
+plt.title('Exercício c) - Gustavo R.')
+funcao = monta_func(1, .1, 4, -45)
+
+plt.plot(tempo,funcao['x_t'],label='x(t)')
+plt.plot(tempo,funcao['e_t'],label='e(t)')
+plt.plot(tempo,funcao['osc_t'],label='A cos(w0t)')
+plt.xlabel('tempo t')
+
+plt.legend()
+plt.show()
+
+print("""a) A = 1 é causadora da amplitude apresentada no eixo Y, o maior valor de Y sendo A;
+alpha = 0.1 é o fator que faz as linhas laranja e azul diminuir;
+omega = 4 é a frequência com qual as linhas verde e azul oscilar no tempo;
+teta = -45ºC é a fase com qual a oscilação inicia em t = 0;
+Devido ao baixo valor de alpha ser baixo o decaimento é bem baixo em relação as funções anteriores.  
+ """)
+
+######################### Exercício D ########################
+
+ plt.title('Exercício d) - Gustavo R.')
+funcao = monta_func(10, 6, 4, -45)
+
+plt.plot(tempo,funcao['x_t'],label='x(t)')
+plt.plot(tempo,funcao['e_t'],label='e(t)')
+plt.plot(tempo,funcao['osc_t'],label='A cos(w0t)')
+plt.xlabel('tempo t')
+
+plt.legend()
+plt.show()
+
+print("""a) A = 10 é causadora da amplitude apresentada no eixo Y, o maior valor de Y sendo A;
+alpha = 6 é o fator que faz as linhas laranja e azul diminuir;
+omega = 4 é a frequência com qual as linhas verde e azul oscilar no tempo;
+teta = -45ºC é a fase com qual a oscilação inicia em t = 0;  
+Devido ao aumento do valor de alpha em relação ao dos gráficos anteriores a oscilação de x(t) causa apenas uma queda;
+Assim como o aumento do valor de A o valor máximo das linhas verde e azul são maiores.
+ """)
+
+$######################### Exercício E ########################
+
+plt.title('Exercício e) - Gustavo R.')
+funcao = monta_func(5, 1, 1, - 0)
+
+plt.plot(tempo,funcao['x_t'],label='x(t)')
+plt.plot(tempo,funcao['e_t'],label='e(t)')
+plt.plot(tempo,funcao['osc_t'],label='A cos(w0t)')
+plt.xlabel('tempo t')
+
+plt.legend()
+plt.show()
+
+print("""a) A = 5 é causadora da amplitude apresentada no eixo Y, o maior valor de Y sendo A;
+alpha = 1 é o fator que faz as linhas laranja e azul diminuir;
+omega = 1 é a frequência com qual as linhas verde e azul oscilar no tempo;
+teta = -0ºC é a fase com qual a oscilação inicia em t = 0;  
+Devido ao valor de omega as oscilações da linha verde e azul ficam maiores, não podendo nem ser vista no intervalo do tempo de 0 à 2.
+ """)
+
+$######################### FIM ########################
